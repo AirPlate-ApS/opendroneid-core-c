@@ -192,10 +192,10 @@ static uint8_t encodeSpeedHorizontal(float Speed_data, uint8_t *mult)
 {
     if (Speed_data <= UINT8_MAX * SPEED_DIV[0]) {
         *mult = 0;
-        return (uint8_t) ((Speed_data / SPEED_DIV[0]) + 0.5f);
+        return (uint8_t) round(Speed_data / SPEED_DIV[0]);
     } else {
         *mult = 1;
-        int big_value = (int) (((Speed_data - (UINT8_MAX * SPEED_DIV[0])) / SPEED_DIV[1]) + 0.5f);
+        int big_value = (int) round((Speed_data - (UINT8_MAX * SPEED_DIV[0])) / SPEED_DIV[1]);
         return (uint8_t) intRangeMax(big_value, 0, UINT8_MAX);
     }
 }
