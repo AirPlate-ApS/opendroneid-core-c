@@ -192,10 +192,10 @@ static uint8_t encodeSpeedHorizontal(float Speed_data, uint8_t *mult)
 {
     if (Speed_data <= UINT8_MAX * SPEED_DIV[0]) {
         *mult = 0;
-        return (uint8_t) ((Speed_data / SPEED_DIV[0]) + 0.5f);
+        return (uint8_t) round(Speed_data / SPEED_DIV[0]);
     } else {
         *mult = 1;
-        int big_value = (int) (((Speed_data - (UINT8_MAX * SPEED_DIV[0])) / SPEED_DIV[1]) + 0.5f);
+        int big_value = (int) round((Speed_data - (UINT8_MAX * SPEED_DIV[0])) / SPEED_DIV[1]);
         return (uint8_t) intRangeMax(big_value, 0, UINT8_MAX);
     }
 }
@@ -208,7 +208,7 @@ static uint8_t encodeSpeedHorizontal(float Speed_data, uint8_t *mult)
 */
 static int8_t encodeSpeedVertical(float SpeedVertical_data)
 {
-    int encValue = (int) (SpeedVertical_data / VSPEED_DIV);
+    int encValue = (int) round(SpeedVertical_data / VSPEED_DIV);
     return (int8_t) intRangeMax(encValue, INT8_MIN, INT8_MAX);
 }
 
@@ -238,7 +238,7 @@ static int32_t encodeLatLon(double LatLon_data)
 */
 static uint16_t encodeAltitude(float Alt_data)
 {
-    return (uint16_t) intRangeMax( (int) ((Alt_data + (float) ALT_ADDER) / ALT_DIV), 0, UINT16_MAX);
+    return (uint16_t) intRangeMax((int) round((Alt_data + (float) ALT_ADDER) / ALT_DIV), 0, UINT16_MAX);
 }
 
 /**
