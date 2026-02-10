@@ -208,7 +208,7 @@ static uint8_t encodeSpeedHorizontal(float Speed_data, uint8_t *mult)
 */
 static int8_t encodeSpeedVertical(float SpeedVertical_data)
 {
-    int encValue = (int) (SpeedVertical_data / VSPEED_DIV);
+    int encValue = (int) round(SpeedVertical_data / VSPEED_DIV);
     return (int8_t) intRangeMax(encValue, INT8_MIN, INT8_MAX);
 }
 
