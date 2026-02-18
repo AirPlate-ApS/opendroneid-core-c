@@ -11,6 +11,7 @@ Simon Wunderlich
 sw@simonwunderlich.de
 */
 
+#include <time.h>
 #if defined(ARDUINO_ARCH_ESP32)
 #include <Arduino.h>
 int clock_gettime(clockid_t, struct timespec *);
@@ -21,7 +22,6 @@ int clock_gettime(clockid_t, struct timespec *);
 #endif
 
 #include <errno.h>
-#include <time.h>
 
 #include "opendroneid.h"
 #include "odid_wifi.h"
